@@ -23,9 +23,10 @@ jobs:
           INTERNAL=$(curl --silent ${WEBRTC_URL}/+/${REVISION}?format=TEXT | base64 -d | tail -1 | egrep -o '{#([0-9]+)}' | tr -d '{}#' | cut -c1-7)
           NAME="webrtc-${INTERNAL}-${REVISION:0:7}"
 
-          echo "Building branch: ${WEBRTC_URL}"
+          echo "Repository: ${WEBRTC_URL}"
+          echo "Branch: ${WEBRTC_BRANCH}"
           echo "Revision: ${REVISION}"
-          echo "Internal revision: ${REVISION_INTERNAL}"
+          echo "Internal revision: ${INTERNAL}"
           echo "Output: ${NAME}"
 
           echo "::set-output name=revision::${REVISION}"
